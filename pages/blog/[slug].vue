@@ -8,6 +8,12 @@ const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
     });
 });
 
+const title = post.value?.title;
+
+useHead({
+    title: `Connectly - ${title}`
+})
+
 </script>
 
 

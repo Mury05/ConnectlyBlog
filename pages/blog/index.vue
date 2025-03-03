@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const { data: posts } = await useAsyncData('posts', () => queryCollection('blog').all());
-
+useHead({
+    title: `Connectly - Blogs`
+})
 </script>
 
 
