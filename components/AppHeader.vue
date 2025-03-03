@@ -18,7 +18,8 @@ const links = [
     <UHeader>
         <template #left>
             <NuxtLink to="/">
-                <img src="/logo.png" alt="Logo de Connectly" class="w-auto h-6 shrink-0">
+                <!-- <img src="/logo.png" alt="Logo de Connectly" class="w-auto h-6 shrink-0"> -->
+                 <Icon name="devicon:apple" class="h-12 w-12" />
             </NuxtLink>
         </template>
 
