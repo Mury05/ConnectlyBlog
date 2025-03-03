@@ -3,22 +3,33 @@ const route = useRoute();
 
 const { data: post } = await useAsyncData(route.path, () => queryCollection('blog').path(route.path).first());
 const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
-    return queryCollectionItemSurroundings('blog', route.path, { 
-        fields: ['description'] 
+    return queryCollectionItemSurroundings('blog', route.path, {
+        fields: ['description']
     });
 });
-
+const runtimeConfig = useRuntimeConfig()
 const title = post.value?.title;
-
+const description = post.value?.description;
+const url = `${runtimeConfig.public.appUrl}${route.path}`;
 useHead({
     title: `Connectly - ${title}`
+})
+
+useSeoMeta({
+    ogTitle: title,
+    ogDescription: description,
+    ogType: 'article',
+    ogUrl: url,
+    ogImage: post.value!.image.src,
+    twitterCard: 'summary_large_image',
+    twitterTitle: title,
+    twitterDescription: description,
 })
 
 </script>
 
 
 <template>
-
     <UContainer v-if="post">
         <UPageHeader :title="post.title" :description="post.description">
             <template #headline>
@@ -41,14 +52,14 @@ useHead({
                 <ContentRenderer :value="post" />
 
                 <!-- Séparateur -->
-                <UDivider v-if="surround" class="my-8"/>
+                <UDivider v-if="surround" class="my-8" />
 
                 <!-- Les liens d'articles suivants et précédents -->
-                <UContentSurround v-if="surround" :surround="surround"  />
+                <UContentSurround v-if="surround" :surround="surround" />
             </UPageBody>
 
             <template v-if="post.body.toc?.links.length" #right>
-                <UContentToc :links="post.body.toc.links"/>
+                <UContentToc :links="post.body.toc.links" />
             </template>
         </UPage>
     </UContainer>
