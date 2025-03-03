@@ -1,6 +1,8 @@
 
 <script lang="ts" setup>
-
+useHead({
+  title: 'Accueil - Connectly'
+})
 </script>
 <template>
   <UBlogList orientation="horizontal">
