@@ -1,7 +1,11 @@
 <script lang="ts" setup>
 const links = [
     {
-        label: 'Blog',
+        label: 'Accueil',
+        to: '/',
+    },
+    {
+        label: 'Blogs',
         to: '/blog',
     },
     {
@@ -30,7 +34,7 @@ const links = [
         <template #right>
             <div class="hidden lg:flex">
 
-                <UButton label="Se connecter" variant="link" color="orange" to="/login" />
+                <!-- <UButton label="Se connecter" variant="link" color="orange" to="/login" /> -->
             </div>
             <UColorModeButton />
         </template>

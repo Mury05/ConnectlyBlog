@@ -81,7 +81,7 @@ cta:
       target: _self
       icon: i-lucide-user-plus
     - label: En savoir plus
-      to: '/a-propos'
+      to: '/about'
       trailingIcon: i-lucide-info
       target: _self
       variant: subtle
